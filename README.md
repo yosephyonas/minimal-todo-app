@@ -8,5 +8,5 @@ simple todo app which i made using hive which can store imformation on the inter
 *Description: this page displays the task where a user can see the task thats added , delete task,  linethrough tasks that they completed complete and .*
 
 
-![Screenshot](https://github.com/yosephyonas/minimal-todo-app/assets/101545038/4b347034-1bc0-4516-94a9-eb886250ab2c)
+<img src="https://github.com/yosephyonas/minimal-todo-app/assets/101545038/4b347034-1bc0-4516-94a9-eb886250ab2c" alt="Screenshot" width="300">
 *Description: this page is used to set the task, the time and the date.*
