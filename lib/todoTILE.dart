@@ -3,16 +3,20 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 
 class TodoTile extends StatelessWidget {
   final String taskName;
-  final bool taskCompleted;
-  final Function(bool?)? onChanged;
-  final Function(BuildContext)? deleteFunction;
+  final String taskDate;
+  final String taskTime;
+  final Function(bool?)? checkBoxCallback;
+  final Function(BuildContext)? deleteCallback;
+  final bool isChecked;
 
   const TodoTile({
     Key? key,
     required this.taskName,
-    required this.taskCompleted,
-    this.onChanged,
-    this.deleteFunction,
+    required this.taskDate,
+    required this.taskTime,
+    required this.checkBoxCallback,
+    this.deleteCallback,
+    required this.isChecked,
   }) : super(key: key);
 
   @override
@@ -24,7 +28,7 @@ class TodoTile extends StatelessWidget {
           motion: const StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: deleteFunction,
+              onPressed: deleteCallback,
               icon: Icons.delete,
               backgroundColor: Colors.red.shade300,
               borderRadius: BorderRadius.circular(12),
@@ -40,20 +44,44 @@ class TodoTile extends StatelessWidget {
           child: Row(
             children: [
               Checkbox(
-                value: taskCompleted,
-                onChanged: onChanged,
+                value: isChecked,
+                onChanged: checkBoxCallback,
                 activeColor: Colors.black,
               ),
-              const SizedBox(width: 20),
-              Expanded(
+              const SizedBox(width: 15),
+              SizedBox(
+                width: 120,
                 child: Text(
                   taskName,
                   style: TextStyle(
-                    decoration: taskCompleted
+                    fontSize: 15,
+                    decoration: isChecked
                         ? TextDecoration.lineThrough
                         : TextDecoration.none,
                   ),
                 ),
+              ),
+              const SizedBox(width: 17),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    taskDate,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    taskTime,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
